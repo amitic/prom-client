@@ -562,6 +562,7 @@ export interface SummaryConfiguration<T extends string>
 	percentiles?: number[];
 	maxAgeSeconds?: number;
 	ageBuckets?: number;
+	pruneAgedBuckets?: boolean;
 	compressCount?: number;
 	collect?: CollectFunction<Summary<T>>;
 }
