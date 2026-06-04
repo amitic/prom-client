@@ -56,6 +56,11 @@ describe.each([
 			expect(values[0].value).toEqual(0);
 		});
 
+		it('should set counter', async () => {
+			instance.set(100);
+			expect((await instance.get()).values[0].value).toEqual(100);
+		});
+
 		describe('labels', () => {
 			beforeEach(() => {
 				instance = new Counter({
@@ -100,6 +105,12 @@ describe.each([
 
 			it('should increment label value with provided value', async () => {
 				instance.labels('GET', '/test').inc(100);
+				const values = (await instance.get()).values;
+				expect(values[0].value).toEqual(100);
+			});
+
+			it('should set label value with provided value', async () => {
+				instance.labels('GET', '/test').set(100);
 				const values = (await instance.get()).values;
 				expect(values[0].value).toEqual(100);
 			});
